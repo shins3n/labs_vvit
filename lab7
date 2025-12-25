@@ -1,0 +1,66 @@
+class Employee:
+    def __init__(self, name, employee_id):
+        self.name = name
+        self.id = employee_id
+        self.team = []
+
+    def get_info(self):
+        return f"Сотрудник: {self.name}, ID: {self.id}"
+
+class Manager(Employee):
+    def __init__(self, name, employee_id, department):
+        Employee.__init__(self, name, employee_id)
+        self.department = department
+
+    def manage_project(self):
+        return f"{self.name} управляет проектами в отделе {self.department}"
+
+
+class Technician(Employee):
+    def __init__(self, name, employee_id, specialization):
+        Employee.__init__(self, name, employee_id)
+        self.specialization = specialization
+
+    def perform_maintenance(self):
+        return f"{self.name} выполняет обслуживание по специализации {self.specialization}"
+
+
+class TechManager(Manager, Technician):
+
+    def __init__(self, name, employee_id, department, specialization):
+        Manager.__init__(self, name, employee_id, department)
+        Technician.__init__(self, name, employee_id, specialization)
+
+    def add_employee(self, employee):
+        self.team.append(employee)
+        return f"Сотрудник {employee.name} добавлен в команду к {self.name}"
+
+    def get_team_info(self):
+        if not self.team:
+            return f"У {self.name} в команде нет сотрудников"
+
+        info = f"Команда технического менеджера {self.name}:\n"
+        for emp in self.team:
+            info += f" - {emp.get_info()}\n"
+        return info.strip()
+
+    def get_info(self):
+        return f"Технический менеджер: {self.name}, ID: {self.id}, Отдел: {self.department}, Специализация: {self.specialization}"
+
+    def perform_maintenance(self):
+        return f"{self.name} (технический менеджер) курирует работы в области {self.specialization}"
+
+
+if __name__ == "__main__":
+    emp1 = Employee("Антон Петров", 1001)
+    tech = Technician("Сергей Иванов", 3001, "Сети")
+    tech_manager = TechManager("Мария Морозова", 4001, "Разработка", "DevOps")
+    print("Технический менеджер:")
+    print(tech_manager.get_info())
+    print(tech_manager.manage_project())
+    print(tech_manager.perform_maintenance())
+    print("Добавление сотрудников в команду:")
+    print(tech_manager.add_employee(emp1))
+    print(tech_manager.add_employee(tech))
+    print("Информация о команде:")
+    print(tech_manager.get_team_info())
