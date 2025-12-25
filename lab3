@@ -1,0 +1,41 @@
+#1
+def read_file(method, filename):
+    if method == 'line':
+        with open(filename) as file:
+            for line in file:
+               print(line)
+    if method == 'whole':
+        with (open(filename) as file):
+            content = file.read()
+            print(content)
+z = str(input('тип чтения(whole/line) = '))
+v = str(input('название.txt = '))
+read_file(z,v)
+#2
+def file_write(filename):
+    with open(filename,'w') as file:
+        t = input('написать новый текст = ')
+        file.write(t)
+def file_append(filename):
+    with open(filename,'a') as file:
+        st = input('добавить новый текст = ')
+        file.write('' + st)
+f = input('название файла = ')
+file_write(f)
+file_append(f)
+#3
+def read_file(method, filename):
+    try:
+        if method == 'line':
+            with open(filename) as file:
+                for line in file:
+                    print(line)
+        if method == 'whole':
+            with open(filename) as file:
+                content = file.read()
+                print(content)
+    except FileNotFoundError:
+        print(f"Ошибка: Файл '{filename}' не найден.")
+z = str(input('тип чтения(whole/line) = '))
+v = str(input('название.txt = '))
+read_file(z,v)
