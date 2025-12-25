@@ -1,1 +1,46 @@
-
+#numbers.py
+def slogenie_num(a,b):
+    return a+b
+def ymnogenie(a,b):
+    return a*b
+def vichitanie_num(a,b):
+    return a-b
+def delenie_num(a,b):
+    if b == 0:
+        return 'На нолик не поделишь'
+    return a/b
+#stroki.py
+def perevorachivaet_stroki(text):
+    return text[::-1]
+#1
+import math
+from datetime import datetime
+number = float(input('Число для вычисления корня:'))
+if number >= 0:
+    result = math.sqrt(number)
+    date = datetime.today()
+    print(f'Получившийся корень числа:{result}, Дата и время: {date}')
+else:
+    print('Число отрицательное! Для корня не подойдет >:(  ')
+#2
+import my_module
+res1 = my_module.slogenie_num(5,3)
+res2 = my_module.ymnogenie(5,3)
+res3 = my_module.vichitanie_num(5,3)
+res4 = my_module.delenie_num(3,0)
+print(f'{res1}, {res2} , {res3} , {res4}.')
+#3
+from paket import numbers
+from paket import stroki
+print(f'Получившееся число: {numbers.slogenie_num(int(input()),int(input()))}, Текст:{stroki.perevorachivaet_stroki(input())}')
+#my_module
+def slogenie_num(a,b):
+    return a+b
+def ymnogenie(a,b):
+    return a*b
+def vichitanie_num(a,b):
+    return a-b
+def delenie_num(a,b):
+    if b == 0:
+        return 'На ноль нельзя'
+    return a/b
