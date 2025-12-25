@@ -1,0 +1,19 @@
+#1
+def greet(name):
+    return f'Привет {name}!'
+print(greet('Рома'))
+
+#2
+def square(number):
+    return number**2
+print(square(10))
+
+#3
+def max_of_two(x,y):
+    if x>y:
+        return x
+    elif x==y:
+        return "Числа равны"
+    else:
+        return y
+print(max_of_two(3,10))
